@@ -101,8 +101,9 @@ figcaption{font-size:12.5px;color:var(--dim);text-align:center;padding-top:10px;
 <script>
 (function(){
 var v=document.getElementById('vid'),pb=document.getElementById('pb'),fr=document.getElementById('yt');
-fr.addEventListener('click',function(){if(v.paused){v.play();}});
+fr.addEventListener('click',function(){if(v.paused&&!v.ended){v.play();}});
 v.addEventListener('play',function(){v.setAttribute('controls','');pb.style.display='none';});
+v.addEventListener('ended',function(){v.removeAttribute('controls');v.load();pb.style.display='';});
 })();
 </script>
 
